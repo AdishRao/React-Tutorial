@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,16 @@
   "homepage": "https://github.com/AdishRao/React-Tutorial#readme",
   "devDependencies": {
     "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.13.4",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
     "parcel": "^2.2.1"
   },
   "dependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "browserslist": [
     "last 2 Chrome versions",
