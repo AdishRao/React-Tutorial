@@ -1,26 +1,40 @@
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h2", {}, props.name),
-    React.createElement("h3", {}, props.animal),
-    React.createElement("h3", {}, props.breed),
-  ]);
-};
+import { StrictMode, useState } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import SearchParams from "./SearchParams";
+import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", { id: "my-brand" }, "Adopt Me!"),
-    React.createElement(Pet, { name: "Luxa", animal: "Dog", breed: "Husky" }),
-    React.createElement(Pet, {
-      name: "Charlie",
-      animal: "Dog",
-      breed: "Golden",
-    }),
-    React.createElement(Pet, {
-      name: "Teddy",
-      animal: "Cat",
-      breed: "Unknown",
-    }),
-  ]);
+  const themeHook = useState("darkblue");
+
+  return (
+    <ThemeContext.Provider value={themeHook}>
+      <div>
+        <Router>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          {/*Matches first string*/}
+          <Switch>
+            <Route path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="/">
+              <SearchParams />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
+  );
 };
 
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
